@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-//Преобразование матрицы к одномерному массиву
+//matrix to one-dimensional array
 function outAns(e) {
 	
 var l = new Array(e.length * e.length);
@@ -20,12 +20,12 @@ l[i*e.length+j] = e[i][j];
 
 }
 
-//Квадрат числа
+//square of a number
 function sqr(f) {
 	return f*f;
 }
 
-//Разность векторов
+//difference of vectors
 function minus(a, b) {
 	var t = new Array(a.length);
 	for(var i=0; i<t.length; i++){
@@ -36,7 +36,7 @@ return t;
 
 }
 
-//Умножение вектора на скаляр
+//multiplication of number on vector
 function multSc(sc, v) {
 
 	var t = new Array(v.length);
@@ -47,7 +47,7 @@ function multSc(sc, v) {
 
 }
 
-//Скалярное произведение векторов
+//scalar multiplication of vectors
 function sc(q, p) {
 
 	var t = 0;
@@ -58,7 +58,7 @@ function sc(q, p) {
 
 }
 
-//Нормализация вектора
+//normalizing of vector
 function normal(f) {
 
 	var d = 1/Math.sqrt(sc(f, f));
@@ -67,7 +67,7 @@ function normal(f) {
 
 }
 
-//Метод Грама-Шмидта(после выполнения исходный базис будет нормированным, т.е. исходные данные портятся в некотором смысле)
+//Gram-Shmidth method(after execution income basis will be normalaized -> income data changes)
 function solve(f) {
 	var e = new Array(f.length);
 
@@ -88,7 +88,7 @@ function solve(f) {
 }
 
 var alertOn = false;
-//Получить данные из ячейки формы
+//get data from cell of the form
 function getV(v, coord){
 	var elName = "f" + v + "_" + coord;
 	var val = document.forms["solver"].elements[elName].value;
@@ -97,13 +97,13 @@ function getV(v, coord){
 }
 
 var dim = 3;
-//Создание формы
+//creating of form
 function generateForm(size){
 	dim = size;
 	var form = document.forms["solver"];
-	var topPart = "<lable for='solver'>Метод Грама-Шмидта для преобразования к ортонормированному базису</lable>" + 
+	var topPart = "<lable for='solver'>Gram-Shmidth method for morfing to orto-normalized basis</lable>" + 
 		"<hr>" + 
-		"<lable for='dim'>Размерность: </lable>" + 
+		"<lable for='dim'>Dimension: </lable>" + 
 		"<input type='number' name='dim' value=" + dim + " min='2' step='1' onChange='generateForm(this.value);'>" + 
 		"<br><br>";
 	var middlePart = "";
@@ -118,9 +118,9 @@ function generateForm(size){
 	form.innerHTML = topPart + middlePart + bottomPart;
 }
 
-//Проверить на ортогональность
+//check orthogonality
 function checkOrto(e){
-	var str = "<br>Проверка:<br>";
+	var str = "<br>Check:<br>";
 	for(var i=0; i<e.length; i++){
 		for(var j=i+1; j<e.length; j++){
 			str += "(e" + i + "*e" + j + ") = " + sc(e[i], e[j]) + "<br>";
@@ -129,7 +129,7 @@ function checkOrto(e){
 	return str;
 }
 
-//Считывание данных формы, попытка решения, вывод ответа
+//reading data from form, try to solve, output of answer
 function execTask() {
 	alertOn = false;
 	var f = new Array(dim);
@@ -147,7 +147,7 @@ function execTask() {
 
 	outS += "RAW:" + l + "<br><br>";
 	
-	outS += "Нормированный изначальный базис<br>";
+	outS += "Normalized income basis<br>";
 	for(var i=0; i<dim; i++){
 		outS += "f" + i + ":";
 		for(var j=0; j<dim; j++){
@@ -156,7 +156,7 @@ function execTask() {
 		outS += "<br>";
 	}
 
-	outS += "<br>Результат алгоритма:<br>";
+	outS += "<br>Result of algorithm:<br>";
 
 	var inStepic = "";
 	
