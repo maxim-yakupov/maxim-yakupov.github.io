@@ -1,31 +1,22 @@
 (function(app) {
   /* global ng */
-  function Hero(id, name) {
-    this.id = id;
-    this.name = name;
-  }
 
   app.AppComponent =
     ng.core.Component({
       "selector" : 'my-app',
       "template" : `
-                <h1>{{title}}</h1>
-                <h2>My Heroes</h2>
-                <ul class="heroes">
-                  <li *ngFor="#hero of heroes"
-                    [class.selected]="hero === selectedHero"
-                    (click)="onSelect(hero)">
-                    <span class="badge">{{hero.id}}</span> {{hero.name}}
-                  </li>
-                </ul>
-                <div *ngIf="selectedHero">
-                  <h2>{{selectedHero.name}} details!</h2>
-                  <div><label>id: </label>{{selectedHero.id}}</div>
-                  <div>
-                    <label>name: </label>
-                    <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-                  </div>
-                </div>
+                  <h1>{{title}}</h1>
+                  <h2>My Heroes</h2>
+                  <ul class="heroes">
+                    <li *ngFor="#hero of heroes"
+                      [class.selected]="hero === selectedHero"
+                      (click)="onSelect(hero)">
+                      <span class="badge">{{hero.id}}</span> {{hero.name}}
+                    </li>
+                  </ul>
+                  <my-hero-detail [hero]="selectedHero">
+                    Detail Loading ...
+                  </my-hero-detail>
                 `,
       "styles" : [`
                 .selected {
@@ -75,13 +66,21 @@
                   margin-right: .8em;
                   border-radius: 4px 0 0 4px;
                 }
-              `]
+              `],
+      "directives" : [app.HeroDetailComponent]
     })
     .Class({
-      constructor: function() {
+      constructor : function() {
       	this.title = 'Tour of Heroes';
       	this.selectedHero = null;
-      	this.heroes = [
+      	this.heroes = HEROES;
+        this.onSelect = function(hero) {
+          this.selectedHero = hero;
+        };
+      }
+    });
+  
+  var HEROES = [
                 { "id": 11, "name": "Mr. Nice" },
                 { "id": 12, "name": "Narco" },
                 { "id": 13, "name": "Bombasto" },
@@ -93,9 +92,4 @@
                 { "id": 19, "name": "Magma" },
                 { "id": 20, "name": "Tornado" }
               ];
-        this.onSelect = function(hero) {
-          this.selectedHero = hero;
-        };
-	    }
-    });
 })(window.app || (window.app = {}));
