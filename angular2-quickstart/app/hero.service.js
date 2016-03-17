@@ -11,6 +11,10 @@
         return new Promise(resolve =>
           setTimeout(() => resolve(app.HEROES), 2000) // 2 seconds
         );
+      },
+      getHero : function(id) {
+        return Promise.resolve(app.HEROES)
+          .then(heroes => heroes.filter(hero => hero.id === id)[0]);
       }
     });
   

@@ -1,29 +1,32 @@
 <html>
-  <head>
-    <title>Tour of Heroes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
+    <head>
+        <base href="/" />
+        <title>Tour of Heroes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
 
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfill -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
+        <!-- 1. Load libraries -->
+        <!-- IE required polyfill -->
+        <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+        <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
-    <script src="node_modules/angular2/bundles/angular2-all.umd.js"></script>
+        <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+        <script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
+        <script src="node_modules/angular2/bundles/angular2-all.umd.js"></script>
+        <script src="node_modules/angular2/bundles/router.dev.js"></script>
 
-    <!-- 2. Load our 'modules' -->
-    <script src='app/mock-heroes.js'></script>
-    <script src='app/hero.service.js'></script>
-    <script src='app/hero-detail.component.js'></script>
-    <script src='app/app.component.js'></script>
-    <script src='app/main.js'></script>
-  </head>
+        <!-- 2. Load our 'modules' -->
+        <script src='app/mock-heroes.js'></script>
+        <script src='app/hero.service.js'></script>
+        <script src='app/hero-detail.component.js'></script>
+        <script src='app/heroes.component.js'></script>
+        <script src='app/dashboard.component.js'></script>
+        <script src='app/app.component.js'></script>
+        <script src='app/main.js'></script>
+    </head>
 
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
-
+    <!-- 3. Display the application -->
+    <body>
+        <my-app>Loading...</my-app>
+    </body>
 </html>
