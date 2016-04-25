@@ -18,7 +18,7 @@ function create(name, channels, selectedChannelId, volumeLevel, isVolumeOn, isPo
             function volumeSwitch() {
                 this.isVolumeOn = !this.isVolumeOn;
                 this.UI.updateVolume();
-                this.UI.showSnackbar(isVolumeOn ? "volume is on" : "volume is off", 500, null, "");
+                this.UI.showSnackbar(this.isVolumeOn ? "Volume is on" : "Volume is off", 500, null, "");
             },
         "powerSwitch":
             function powerSwitch() {
