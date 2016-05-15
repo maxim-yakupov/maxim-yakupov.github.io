@@ -1,8 +1,44 @@
 <html>
     <head>
         <base href="/" />
+        <meta charset="windows-1251">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- material-design-lite -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+        
+        <!-- Angular 2 -->
+        <script src="libs/es6-shim.min.js"></script>
+
+        <script src="libs/zone.js"></script>
+        <script src="libs/Reflect.js"></script>
+
+        <script src="libs/Rx.umd.js"></script>
+        <script src="libs/@angular/core/core.umd.js"></script>
+        <script src="libs/@angular/common/common.umd.js"></script>
+        <script src="libs/@angular/compiler/compiler.umd.js"></script>
+        <script src="libs/@angular/platform-browser/platform-browser.umd.js"></script>
+        <script src="libs/@angular/platform-browser-dynamic/platform-browser-dynamic.umd.js"></script>
+        <script src="libs/@angular/router/router.umd.js"></script>
+        <!--<script> ng.router = ng.router_deprecated; </script>-->
+        <!-- app files -->
+        <script src="qpon/utils.js"></script>
+        <script src="qpon/wrong-path.component.js"></script>
+        <script src="qpon/article.component.js"></script>
+        <script src="qpon/article-preview.component.js"></script>
+        <script src="qpon/tags.component.js"></script>
+        <script src="qpon/articles-list.component.js"></script>
+        <script src="qpon/blog.component.js"></script>
+        <script src="qpon/about.component.js"></script>
+        <script src="qpon/navigation.component.js"></script>
+        <script src="qpon/app.component.js"></script>
+        <script src="qpon/main.js"></script>
     </head>
     <body>
-        <a href="./angular2-quickstart/index.html">angular2-quickstart/index</a>
+        <qpon-app>
+            Loading..
+        </qpon-app>
     </body>
 </html>

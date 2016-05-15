@@ -1,0 +1,68 @@
+<style>
+.mdl-card__title {
+    height: 300px;
+    background: url('https://pp.vk.me/c543108/v543108555/cd3e/qiLxt1lO0HU.jpg') center / cover;
+}
+div.mdl-card__supporting-text > p {
+    font-size: 1.2em;
+};
+</style>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col"></div>
+    <div class="mdl-card mdl-cell mdl-cell--8-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">
+                Обо мне
+            </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+        <h3>Якупов Максим Азаматович (<a href="mailto://maxim.yakupov@gmail.com">e-mail</a>)</h3>
+        <h5>5.12.1995, г. Санкт-­Петербург</h5>
+        <p>
+        <em>Образование:</em> Математико-­механический факультет СпбГУ,
+        кафедра системного программирования (неоконченное высшее, год окончания - 2018)
+        </p>
+        <p>
+        <em>Навыки и языки:</em> C++/Qt(2 года), Java(2 года), C#, JavaScript,
+        Angular 2, NVIDIA CUDA, Python, T­-SQL, HTML, CSS; имею
+        отдаленное представление о Haskell, F#
+        </p>
+        <p>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+            <em>Опыт работы:</em> официально трудоустроен еще не был, однако
+            участвовал в следующих проектах:
+            <ul class="mdl-list">
+                <li *ngFor="let work of works"
+                    class="mdl-list__item mdl-list__item--three-line">
+                    <a (click)="resolveLink(work.link)" [style.cursor]="work.link ? 'pointer' : 'auto'"
+                        [style.color]="work.link ? '' : 'black'">
+                    <span class="mdl-list__item-primary-content"
+                                        style="min-height: 100px;">
+                        <i class="fa fa-github material-icons mdl-list__item-avatar"
+                            [class.mdl-color--primary]="work.link" aria-hidden="true"></i>
+                        <span>{{work.title}}</span>
+                        <span class="mdl-list__item-text-body">
+                            {{work.description}}
+                        </span>
+                    </span>
+                    </a>
+                </li>
+            </ul>
+        <p>
+            <em>Контакты:</em>
+            <ul>
+                <li>https://vk.com/yakupov_maxim</li>
+                <li>https://github.com/maxim­-yakupov</li>
+                <li>maxim.yakupov@gmail.com</li>
+            </ul>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-navigation__link" [routerLink]="['/blog']">
+                <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Back to articles
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--2-col"></div>
+</div>

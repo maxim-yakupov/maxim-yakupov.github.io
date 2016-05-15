@@ -1,0 +1,30 @@
+<div class="mdl-layout--fixed-header mdl-layout mdl-js-layout" style="height:inherit;">
+    <header class="mdl-layout__header mdl-layout__header--fixed-header">
+        <div class="mdl-layout__header-row"
+            style="padding:0 30%;">
+            <span class="mdl-layout-title">
+                <button (click)="changeIsExpanded()"
+                    style="max-width: 20em;"
+                    class="mdl-button mdl-button--accent mdl-button--raised mdl-js-button mdl-js-ripple-effect">
+                    Tags
+                    <i class="material-icons">
+                      {{isExpanded ? 'expand_less' : 'expand_more'}}
+                    </i>
+                </button>
+            </span>
+        </div>
+    </header>
+    <main *ngIf="isExpanded" class="mdl-layout__content" style="max-height: 14em; background: white;">
+        <div class="page-content">
+            <ul class="mdl-list">
+                <li *ngFor="let tag of tags"
+                    (click)="changeSelection(tag)" class="mdl-list__item">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-icon" [class.mdl-color-text--accent]="selectedTags.includes(tag)">star</i>
+                        {{tag}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </main>
+</div>
