@@ -5,7 +5,13 @@
             selector: 'qpon-app',
             templateUrl: "qpon/templates/app.component.html",
             directives : [ng.router.ROUTER_DIRECTIVES, app.NavigationComponent],
-            providers : [ng.router.ROUTER_PROVIDERS]
+            providers : [
+                ng.router.ROUTER_PROVIDERS,
+                ng.core.provide(
+                    ng.common.LocationStrategy,
+                    { useClass: ng.common.HashLocationStrategy }
+                )
+            ]
         })
         .Class({
             constructor: [
