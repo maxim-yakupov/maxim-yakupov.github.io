@@ -8,19 +8,23 @@
 </style>
 <div class="mdl-grid" style="height: calc(95% - 64px);">
     <qpon-tags class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet"></qpon-tags>
-    <button class="mdl-button mdl-shadow--16dp mdl-js-ripple-effect mdl-js-button mdl-button--accent mdl-color mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet"
+    <button class="mdl-button mdl-shadow--16dp mdl-js-ripple-effect mdl-js-button
+        mdl-button--accent mdl-color
+        mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"
         style="border-right: 0; padding: 20% 2.5%;"
         (click)="showNext(-1);">
         <i class="material-icons">keyboard_arrow_left</i>
     </button>
-    <span class="mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet mdl-grid" style=" overflow-y: auto;">
+    <span class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid" style=" overflow-y: auto;">
         <qpon-article-preview *ngFor="let article of articlesToShow" [articleName]="article.name"
-            class="mdl-cell mdl-cell--6-col">
+            class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
             <qpon-article-preview-title>{{article.title}}</qpon-article-preview-title>
             <qpon-article-preview-content>{{article.preview}}</qpon-article-preview-content>
         </qpon-article-preview>
     </span>
-    <button class="mdl-button mdl-shadow--16dp mdl-js-ripple-effect mdl-js-button mdl-button--accent mdl-color mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet"
+    <button class="mdl-button mdl-shadow--16dp mdl-js-ripple-effect mdl-js-button
+        mdl-button--accent mdl-color
+        mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"
         style="border-left: 0; padding: 20% 2.5%;"
         (click)="showNext(1);">
         <i class="material-icons">keyboard_arrow_right</i>

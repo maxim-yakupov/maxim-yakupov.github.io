@@ -14,7 +14,7 @@
                       'C++'
                     ];
                     this.selectedTags = [];
-                    this.isExpanded = true;
+                    this.isExpanded = false;
                 },
             ngAfterViewInit: function () {
                 app.utils.MDL.upgradeClasses(["mdl-js-button"]);
