@@ -1,14 +1,13 @@
 <html>
     <head>
         <base href="/" />
-        <meta charset="windows-1251">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- material-design-lite -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
         <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
-        
         <!-- Angular 2 -->
         <script src="libs/es6-shim.min.js"></script>
 
@@ -23,9 +22,14 @@
         <script src="libs/@angular/platform-browser-dynamic/platform-browser-dynamic.umd.js"></script>
         <script src="libs/@angular/router/router.umd.js"></script>
         <!--<script> ng.router = ng.router_deprecated; </script>-->
+
+        <!-- markdown-js -->
+        <script src="libs/markdown.js"></script>
+
         <!-- app files -->
         <script src="qpon/utils.js"></script>
         <script src="qpon/wrong-path.component.js"></script>
+        <script src="qpon/article.service.js"></script>
         <script src="qpon/article.component.js"></script>
         <script src="qpon/article-preview.component.js"></script>
         <script src="qpon/tags.component.js"></script>
@@ -35,6 +39,9 @@
         <script src="qpon/navigation.component.js"></script>
         <script src="qpon/app.component.js"></script>
         <script src="qpon/main.js"></script>
+
+        <!-- common styles -->
+        <link rel="stylesheet" href="qpon/css/markdown.css">
     </head>
     <body>
         <qpon-app>

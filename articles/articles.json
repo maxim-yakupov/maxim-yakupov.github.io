@@ -1,26 +1,33 @@
-[
-	{
-		"name":"testArticle",
-		"title":"BIG TITLE 1"
-	},
-	{
-		"name":"testArticle",
-		"title":"BIG TITLE 2"
-	},
+﻿[
 	{
 		"name":"test",
-		"title":"Test 3"
+		"title":"Состав Angular 2 приложения",
+		"background":"https://angular.io/resources/images/logos/angular2/angular.svg",
+		"preview": "Мой перевод страницы из документации Angular 2"
 	},
 	{
 		"name":"testArticle",
-		"title":"BIG TITLE 4"
+		"title":"BIG TITLE 1",
+		"preview": "test preview"
 	},
 	{
 		"name":"testArticle",
-		"title":"BIG TITLE 5"
+		"title":"BIG TITLE 2",
+		"preview": "test preview"
 	},
 	{
-		"name":"test",
-		"title":"Test 6"
+		"name":"testArticle",
+		"title":"BIG TITLE 3",
+		"preview": "test preview"
+	},
+	{
+		"name":"testArticle",
+		"title":"BIG TITLE 4",
+		"preview": "test preview"
+	},
+	{
+		"name":"testArticle",
+		"title":"BIG TITLE 5",
+		"preview": "test preview"
 	}
 ]

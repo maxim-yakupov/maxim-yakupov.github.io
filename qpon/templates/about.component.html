@@ -1,84 +1,76 @@
 <style>
-.mdl-card__title {
-    height: 300px;
-    background: url('https://pp.vk.me/c543108/v543108555/cd3e/qiLxt1lO0HU.jpg') center / cover;
-}
-div.mdl-card__supporting-text > p {
-    font-size: 1.2em;
-    color: black;
-}
+    .mdl-card {
+        overflow-x: scroll;
+    }
+
+    .mdl-card__title {
+        height: 300px;
+        background: url('https://pp.vk.me/c543108/v543108555/cd3e/qiLxt1lO0HU.jpg') center / cover;
+    }
+
+    div.mdl-card__supporting-text > p {
+        font-size: 1.2em;
+        color: black;
+    }
 </style>
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--2-col"></div>
-    <div class="mdl-card mdl-cell mdl-cell--8-col mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--8-col mdl-shadow--2dp"  style="overflow-x: auto;">
         <div class="mdl-card__title">
             <h2 class="mdl-card__title-text mdl-color--primary mdl-color-text--accent-contrast">
                 Обо мне
             </h2>
         </div>
         <div class="mdl-card__supporting-text">
-        <h3>Якупов Максим Азаматович (<a href="mailto://maxim.yakupov@gmail.com">e-mail</a>)</h3>
-        <h5>5.12.1995, г. Санкт-­Петербург</h5>
-        <p>
-        <em class="mdl-color--primary mdl-color-text--accent-contrast">Образование:</em> Математико-­механический факультет СпбГУ,
-        кафедра системного программирования (неоконченное высшее, год окончания — 2018)
-        </p>
-        <hr>
-        <p>
-        <em class="mdl-color--primary mdl-color-text--accent-contrast">Навыки и языки:</em> C++/Qt(2 года), Java(2 года), C#, JavaScript,
-        Angular 2, NVIDIA CUDA, Python, T­-SQL, HTML, CSS; имею
-        отдаленное представление о Haskell, F#
-        </p>
-        <hr>
-        <p>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-            <em class="mdl-color--primary mdl-color-text--accent-contrast">Опыт работы:</em> официально трудоустроен еще не был, однако
-            участвовал в следующих проектах:
-            <div style="overflow-x: auto;">
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"
-                    style="white-space: normal;">
-              <thead>
-                <tr>
-                  <th class="mdl-data-table__cell--non-numeric">Проект</th>
-                  <th class="mdl-data-table__cell--non-numeric">Роль</th>
-                  <th class="mdl-data-table__cell--non-numeric">Ссылка</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let work of works">
-                  <td class="mdl-data-table__cell--non-numeric">{{work.title}}</td>
-                  <td class="mdl-data-table__cell--non-numeric">{{work.description}}</td>
-                  <td class="mdl-data-table__cell--non-numeric">
-                    <i class="fa fa-github material-icons mdl-list__item-avatar"
-                        (click)="resolveLink(work.link)"
-                        [style.cursor]="work.link ? 'pointer' : ''"
-                        [class.mdl-color--primary]="work.link" aria-hidden="true"></i>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
+            <h3>Якупов Максим Азаматович (<a href="mailto://maxim.yakupov@gmail.com">e-mail</a>)</h3>
+            <h5>5.12.1995, г. Санкт-­Петербург</h5>
+            <p>
+                <em class="mdl-color--primary mdl-color-text--accent-contrast">Образование:</em> Математико-­механический факультет СпбГУ, кафедра системного программирования (неоконченное высшее, год окончания — 2018)
+            </p>
             <hr>
             <p>
+                <em class="mdl-color--primary mdl-color-text--accent-contrast">Навыки и языки:</em> C++/Qt(2 года), Java(2 года), C#, JavaScript, Angular 2, NVIDIA CUDA, Python, T­-SQL, HTML, CSS; имею отдаленное представление о Haskell, F#
+            </p>
+            <hr>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+            <em class="mdl-color--primary mdl-color-text--accent-contrast">Опыт работы:</em> официально трудоустроен еще не был, однако участвовал в следующих проектах:
+            <div style="overflow-x: auto;">
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="white-space: normal;">
+                    <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Проект</th>
+                            <th class="mdl-data-table__cell--non-numeric">Роль</th>
+                            <th class="mdl-data-table__cell--non-numeric">Ссылка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let work of works">
+                            <td class="mdl-data-table__cell--non-numeric">{{work.title}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{work.description}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <i class="fa fa-github material-icons mdl-list__item-avatar" (click)="resolveLink(work.link)" [style.cursor]="work.link ? 'pointer' : ''" [class.mdl-color--primary]="work.link" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
             <em class="mdl-color--primary mdl-color-text--accent-contrast">Контакты:</em>
             <table align=center class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 <thead>
                     <tr>
                         <td>
-                            <a href="https://vk.com/yakupov_maxim" target="_blank"
-                                class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a href="https://vk.com/yakupov_maxim" target="_blank" class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                 Vk.com
                             </a>
                         </td>
                         <td>
-                            <a href="https://github.com/maxim-yakupov" target="_blank"
-                                class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a href="https://github.com/maxim-yakupov" target="_blank" class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                 Github
                             </a>
                         </td>
                         <td>
-                            <a href="mailto://maxim.yakupov@gmail.com" target="_blank"
-                                class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            <a href="mailto://maxim.yakupov@gmail.com" target="_blank" class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                 e-mail
                             </a>
                         </td>

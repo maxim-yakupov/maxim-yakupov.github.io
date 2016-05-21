@@ -1,12 +1,11 @@
 <style>
 .mdl-card__title {
     height: 300px;
-    background: url('https://pp.vk.me/c543108/v543108555/cd3e/qiLxt1lO0HU.jpg') center / cover;
 }
 </style>
 <div class="mdl-card mdl-shadow--2dp" style="width: 100%;">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">
+    <div class="mdl-card__title" [ngStyle]="{'background': 'url(' + background + ') center / cover'}">
+        <h2 class="mdl-card__title-text mdl-color--primary mdl-color-text--accent-contrast">
           <ng-content select="qpon-article-preview-title"></ng-content>
         </h2>
     </div>
@@ -14,7 +13,7 @@
         <ng-content select="qpon-article-preview-content"></ng-content>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-navigation__link" [routerLink]="['/blog/', articleName]">
+        <a class="mdl-navigation__link" [routerLink]="['/blog/', article.name]">
             <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Продолжить чтение
             </button>

@@ -1,1 +1,259 @@
-"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."
+Мы пишем приложения, составляя **_HTML-шаблоны_**, пишем классы **_компонентов_** для управления этими шаблонами, помещаем логику приложения в **_сервисы_**, и передаем верхний корневой **_компонент_** Angular-загрузчику.
+
+![Архитектура Angular 2 приложения](https://angular.io/resources/images/devguide/architecture/overview2.png)
+
+Архитектурная диаграмма выделяет 8 основных составляющих Angular 2 приложения:
+
+1. [Модуль](#Модуль)
+2. [Компонент](#Компонент)
+3. [Шаблон](#Шаблон)
+4. [Мета-данные](#Мета-данные)
+5. [Привязка данных](#Привязка-данных)
+6. [Сервис](#Сервис)
+7. [Директива](#Директива)
+8. [Инъекция зависимостей](#Инъекция-зависимостей)
+
+##Модуль
+
+![Модуль](https://angular.io/resources/images/devguide/architecture/module.png)
+
+По задумке, Angular 2 приложения - модульные.
+
+В основном, мы собираем наше приложение из нескольких модулей.
+
+Обычный модуль - связный блок кода, реализующего одну функциональность. Модуль экспортирует какую-либо цельную сущность (например, сервис или компонент).
+
+>app.component.js
+`
+//Пример реализации модуля 'app' на JavaScript
+(function(app) {
+    //Экспортируемая сущность
+    app.SomeService =
+        ng.core.Class({
+            constructor : function() {}
+        });
+})(window.app || (window.app = {}));
+`
+
+[вверх](/#/blog/test#Мета-данные)
+***
+##Компонент##
+
+![Компонент](https://angular.io/resources/images/devguide/architecture/hero-component.png)
+
+Мы прописываем логику приложения, поддерживающую _представление_(**_view_**) компонента, внутри класса.
+_Класс_ взаимодействует с _видом_ через API свойств и методов.
+
+_'HeroListComponent'_, например, может иметь свойство _'heroes'_, возвращающее массив героев, полученный от сервиса. Компонент может иметь метод _'onSelect()'_, который устанавливает свойство _'selectedHero'_, когда пользователь щелкает по герою из этого списка. [Демонстрация на plnkr.co](http://embed.plnkr.co/7FukTB/)
+
+>hero-list.component.js<a name="hero-list"></a>
+`
+(function(app) {
+  /* global ng */
+  function Hero(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  app.HeroListComponent =
+    ng.core.Class({
+      constructor: function() {
+        this.selectedHero = null;
+        this.heroes = [
+                { "id": 11, "name": "Mr. Nice" },
+                { "id": 12, "name": "Narco" },
+                { "id": 13, "name": "Bombasto" },
+                { "id": 14, "name": "Celeritas" },
+                { "id": 15, "name": "Magneta" },
+                { "id": 16, "name": "RubberMan" },
+                { "id": 17, "name": "Dynama" },
+                { "id": 18, "name": "Dr IQ" },
+                { "id": 19, "name": "Magma" },
+                { "id": 20, "name": "Tornado" }
+              ];
+      },
+      onSelect : function(hero) {
+          this.selectedHero = hero;
+      }
+    });
+})(window.app || (window.app = {}));
+`
+
+Также, есть такая вещь, как [Lifecycle hooks](https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html), позволяющая обрабатывать события компонента(такие, как инициализация, изменение данных и т.п.).
+
+[вверх](#top)
+***
+##Шаблон##
+![Шаблон](https://angular.io/resources/images/devguide/architecture/template.png)
+
+Мы описываем вид компонента с помощью **_шаблона_**. Шаблон - HTML-форма, говорящая Angular, как отрисовывать компонент.
+Шаблон выглядит, как обычный HTML, но с некоторыми добавлениями:
+>hero-list.component.html
+`
+<h2>Hero List</h2>
+<p><i>Pick a hero from the list</i></p>
+<div *ngFor="#hero of heroes" (click)="selectHero(hero)">
+  {{hero.name}}
+</div>
+<hero-detail *ngIf="selectedHero" [hero]="selectedHero"></hero-detail>
+`
+
+Все, что не есть HTML теги - элементы [синтаксиса шаблонов Angular 2](https://angular.io/docs/ts/latest/guide/template-syntax.html).
+Обратим внимание на _'<hero-detail>'_ тэг - кастомный тэг, маркирующий _'HeroDetailComponent'_.
+
+[вверх](#top)
+***
+##Мета-данные##
+
+![Мета-данные](https://angular.io/resources/images/devguide/architecture/metadata.png)
+
+Мета-данные говорят Angular как обрабатывать класс.
+
+На самом деле, [_'HeroListComponent'_](#hero-list) - не Angular 2 компонент, а просто класс. И он не станет компонентом, пока мы не скажем об этом Angular, прицепив мета-данные к нему.
+
+>hero-list.component.js
+`
+app.HeroListComponent =
+    ng.core.Component({
+      "selector" : 'hero-list',
+      "templateUrl" : "app/templates/hero-list.component.html",
+      "styleUrls" : ["app/css/hero-list.component.css"],
+      "directives" : [app.HeroDetailComponent],
+      "providers" :   [app.HeroService]
+    })
+    .Class({...});
+`
+
+_'ng.core.Component'_ - декоратор, помечающий класс как класс-компонент. Он принимает конфигурационный объект, содержащий информацию, нужную Angular для создания компонента и его представления.
+
+Перечислим несколько возможных пунктов конфигурационного объекта:
+
+* _'selector'_ - css селектор, говорящий Angular создать и вставить компонент везде, где будет найден тег _'<hero-list>'_ в родительском HTML.
+* _'templateUrl'_ - адрес файла шаблона компонента.
+* _'styleUrls'_ - массив адресов файлов стилей компонента.
+* _'directives'_ - массив компонент, используемых в данной компоненте.
+* _'providers'_ - массив _поставщиков инъекций зависимостей_(dependency injection providers) для сервисов, используемых в компоненте. Это способ сказать Angular, что конструктор нашего компонента требует _'HeroService'_ с помощью которого получит список героев для показа в списке.
+
+Шаблон, мета-данные и компонент вместе описывают представление.
+
+[вверх](#top)
+***
+##Привязка данных##
+
+![Привязка данных](https://angular.io/resources/images/devguide/architecture/databinding.png)
+
+Angular поддерживает привязку данных - механизм, соединяющий данные шаблона и данные компонента. Мы добавляем разметку привязки данных в HTML шаблон, чтобы указать Angular как соединять шаблон и компонент.
+
+Есть четыре вида привязки данных, каждый имеет направление привязки - в DOM, от DOM, или в обоих направлениях - как показано стрелочками в диаграмме.
+
+>hero-list.component.html (выдержка)
+`
+<div *ngFor="#hero of heroes" (click)="selectHero(hero)">
+  {{hero.name}}
+</div>
+<hero-detail *ngIf="selectedHero" [hero]="selectedHero"></hero-detail>
+`
+
+* Интерполяция отображает значение свойства _'hero.name'_ компонента внутри тегов _'<div>'_.
+
+* Привязка свойства _'[hero]'_ передает _'selectedHero'_ от родительского компонента _'HeroListComponent'_ в свойство _'hero'_ дочернего компонента _'HeroDetailComponent'_.
+
+* Привязка события _'(click)'_ вызывает метод _'selectHero'_ компонента, когда пользователь щелкает по имени героя.
+
+Двусторонняя привязка данных - это важный четвертый вид, который объединяет привязку свойства и событий в одной записи, используя ngModel директиву. [Демонстрация на plnkr.co](http://embed.plnkr.co/bzm2Tk/)
+
+>
+`
+<input [(ngModel)]="hero.name" placeholder="name">
+`
+
+В двусторонней привязке данных значение свойства приходит в _'<input>'_ из компонента, как при привязке свойства. Пользовательские изменения также попадают в компонент, переписывая свойство последним значением, как при привязке события.
+
+Angular обрабатывает все привязки данных за один проход цикла событий, в глубину от корня дерева компонентов приложения.
+
+[вверх](#top)
+***
+##Сервис##
+
+![Cервис](https://angular.io/resources/images/devguide/architecture/service.png)
+
+**_Сервис_**  - широкая категория, охватывающая любые значения, функции или сущности, которые требуются нашему приложению.
+
+Почти все может быть сервисом. Обычно, сервис - это класс с узким, хорошо определенным назначением. Он делает что-то определенное и делает это хорошо :)
+
+Например:
+* сервис логирования
+* сервис данных
+* калькулятор налогов
+* настройки приложения
+
+В Angular нет никаких специальных маркеров для сервисов(как для компонента, например), но все же важно их выделять.
+
+>
+`
+(function(app) {
+  /* global ng */
+  // Пример сервиса героев
+  app.HeroService =
+    ng.core.Class({
+      constructor : function() {},
+      getHeroes : function() {
+        return Promise.resolve(app.HEROES);
+      },
+      getHeroesSlowly : function() {
+        return new Promise(resolve =>
+          setTimeout(() => resolve(app.HEROES), 2000) // 2 seconds
+        );
+      }
+    });
+})(window.app || (window.app = {}));
+`
+
+Наши компоненты - большие потребители сервисов. Они зависят от сервисов при выполнении большинства действий. Компоненты не получают данные от сервера, они не проверяют на корректность пользовательский ввод, они не пишут сообщения напрямую в консоль - такие задачи делегируются сервисам.
+
+Работа компонента - лишь обеспечить пользовательское взаимодействие. Компонент есть связующее звено между _представлением_(отрисовка шаблона) и логикой приложения(что часто включает такое понятие, как _модель_). Хороший компонент предоставляет свойства и методы для привязки данных. Все, что сложнее, он передает сервисам.
+
+Angular не заставляет нас следовать этому принципу, но помогает следовать ему, делая не сложной задачу разбиения логики нашего приложения на сервисы и делая эти сервисы доступными компонентам через инъекцию зависимостей.
+
+[вверх](#top)
+***
+##Директива##
+##Инъекция зависимостей##
+
+![Инъекция зависимостей](https://angular.io/resources/images/devguide/architecture/dependency-injection.png)
+
+**_Инъекция зависимостей_**  - это способ предоставить новый инстанс класса с полностью сформированными зависимостями, которые ему требуются. Большинство зависимостей - это сервисы. Angular использует инъекцию зависимостей, чтобы предоставлять новые компоненты с сервисами, которые им требуются.
+
+>
+`
+// Пример инъекции зависимости
+// При каждом создании компонента будет создаваться новый инстанс сервиса.
+// Если мы хотим взять сервис из родительского компонента,
+// то мы просто не прописываем его в свойстве "providers" дочернего компонента.
+ng.core.Component({
+      ...
+      "providers" : [Service]// не пишем, если хотим сервис из родительского компонента
+    })
+    .Class({
+      constructor : [Service, function(service) {...}]
+    });
+`
+
+Когда Angular создает компонент, сначала он запрашивает у **_Injector_** сервисы, требующиеся компоненту.
+
+_Injector_ хранит в контейнере инстансы сервиса, которые он ранее создал. Если запрашиваемый инстанс сервиса не находится в контейнере, то инжектор создает его и добавляет в контейнер, прежде чем вернуть сервис Angular'у. Когда все запрашиваемые сервисы выделены и возвращены, Angular может вызвать конструктор компонента с этими сервисами в качестве аргументов. Вот что подразумевается под **_инъекцией зависимостей_**.
+
+> main.js
+`
+// Пример инъекции сервиса на самом верхнем уровне
+(function(app) {
+  /* global ng */
+  document.addEventListener('DOMContentLoaded', function() {
+    ng.platform.browser.bootstrap(app.AppComponent, [app.HeroService]);
+  });
+})(window.app || (window.app = {}));
+`
+
+Больше о [**_dependency injection_**](https://angular.io/docs/ts/latest/guide/dependency-injection.html)
+
+[вверх](#top)
+***

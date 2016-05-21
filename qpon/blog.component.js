@@ -4,13 +4,16 @@
         .Component({
             selector: 'qpon-blog',
             templateUrl: "qpon/templates/blog.component.html",
-            directives : [ng.router.ROUTER_DIRECTIVES]
+            directives: [ng.router.ROUTER_DIRECTIVES],
+            providers: [app.ArticleService]
         })
         .Class({
             constructor: [
                 ng.router.Router,
-                function BlogComponentConstructor(router) {
+                app.ArticleService,
+                function BlogComponentConstructor(router, articleService) {
                     this._router = router;
+                    this._articleService = articleService;
                 }
             ]
         });

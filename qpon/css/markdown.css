@@ -1,0 +1,24 @@
+.markdown-blockquote {
+    border-radius: 20px;
+    padding-left: 20px;
+    background-color: rgb(224, 224, 224);
+}
+.markdown-p {
+    text-indent: 25px;
+}
+.markdown-blockquote > p {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+.markdown-em {
+    background-color: rgb(224, 224, 224);
+}
+.markdown-blockquote > pre {
+    overflow-x: auto;
+    font-size: 80%;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+.markdown-blockquote:before, .markdown-blockquote:after {
+    content: "";
+    margin: 0px;
+}

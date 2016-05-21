@@ -1,5 +1,7 @@
 (function(app) {
     /* global ng */
+    var l = app.utils.logger('article.component');
+
     app.ArticleComponent = ng.core
         .Component({
             selector: 'qpon-article',
@@ -9,12 +11,31 @@
         .Class({
             constructor: [
                 ng.router.RouteSegment,
-                function ArticleComponentConstructor(routeSegment) {
+                app.ArticleService,
+                function ArticleComponentConstructor(routeSegment, articleService) {
+                    this._articleService = articleService;
                     this.articleName = routeSegment.getParam('article');
-                    window.console.log(this.articleName);
-                    app.utils.API.article(this.articleName).then(text => this.text = text);
+                    this.articleId = "article-" + this.articleName;
+                    this.article = {};
+                    l.log("Article's name: \"" + this.articleName + "\"");
                 }
-            ]
+            ],
+            ngAfterViewInit: function() {
+                let service = this._articleService;
+                service.updateArticles()
+                    .then(() => {
+                        l.dir(this._articleService.articles);
+                        service.loadAndProcess(this.articleName)
+                            .then(article => {
+                                this.article = article;
+                                this.getArticleArea().innerHTML = article.content;
+                            });
+                    });
+
+            },
+            getArticleArea: function () {
+                return document.getElementById(this.articleId);
+            }
         });
 
 })(window.app || (window.app = {}));
