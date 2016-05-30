@@ -1,0 +1,9 @@
+#####Tour of Heroes реализация на JavaScript на plnkr.co#####
+1. Вступление
+2. [The Hero Editor](http://plnkr.co/edit/bzm2Tk?p=preview)
+3. [Master/Detail](http://plnkr.co/edit/7FukTB?p=preview)
+4. [Multiple Components](http://plnkr.co/edit/Qn1OOh?p=preview)
+5. [Services](http://plnkr.co/edit/DGQjYs?p=preview)
+6. [Routing](http://plnkr.co/edit/i1XSxi?p=preview)
+
+[**Tour of Heroes** туториал на TypeScript](https://angular.io/docs/ts/latest/tutorial/)

@@ -1,33 +1,14 @@
 ﻿[
 	{
-		"name":"test",
-		"title":"Состав Angular 2 приложения",
+		"name":"architectureOverviewOfAngular2",
+		"title":"Состав Angular 2 приложения(TODO: заставить работать якорные ссылки)",
 		"background":"https://angular.io/resources/images/logos/angular2/angular.svg",
 		"preview": "Мой перевод страницы из документации Angular 2"
 	},
 	{
-		"name":"testArticle",
-		"title":"BIG TITLE 1",
-		"preview": "test preview"
-	},
-	{
-		"name":"testArticle",
-		"title":"BIG TITLE 2",
-		"preview": "test preview"
-	},
-	{
-		"name":"testArticle",
-		"title":"BIG TITLE 3",
-		"preview": "test preview"
-	},
-	{
-		"name":"testArticle",
-		"title":"BIG TITLE 4",
-		"preview": "test preview"
-	},
-	{
-		"name":"testArticle",
-		"title":"BIG TITLE 5",
-		"preview": "test preview"
+		"name":"tourOfHeroesInJavascript",
+		"title":"Tour of Heroes",
+		"background":"https://camo.githubusercontent.com/f9a613e61fe37eb2fff2e6c177f3041df8b79764/68747470733a2f2f616e67756c61722e696f2f7265736f75726365732f696d616765732f64657667756964652f6172636869746563747572652f74656d706c6174652e706e67",
+		"preview": "Tour of Heroes реализация на JavaScript на plnkr.co"
 	}
 ]
