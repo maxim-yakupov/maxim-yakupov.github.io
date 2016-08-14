@@ -11,7 +11,7 @@
                 function AboutComponentConstructor() {
                     this.works = [
                         {
-                            title: 'весна 2016 —­ студ. проект “AnalyzeMe”',
+                            title: 'весна 2016 — студ. проект “AnalyzeMe”',
                             link: 'https://github.com/lanit-tercom-school/analyzeme',
                             description: 'делаю фронт­енд на фреймворке Angular 2 (JavaScript, HTML, CSS)'
                         },
@@ -25,7 +25,7 @@
                             description: 'реализовал параллельные алгоритмы скелетизации изображения отпечатка пальца, нахождения минуций(особых точек) на скелетизованном изображении отпечатка пальца (C# ­ прототипирование, NVIDIA CUDA ­ итоговая реализация)'
                         },
                         {
-                            title: 'весна 2014 —­ fork студ. проекта “QReal”',
+                            title: 'весна 2014 — fork студ. проекта “QReal”',
                             link: 'https://github.com/maxim-yakupov/qreal',
                             description: 'участвовал в создании генератора F# кода из диаграмм (C++/Qt)'
                         },
@@ -33,6 +33,14 @@
                             title: 'а также множество учебных программ',
                             link: 'https://github.com/maxim-yakupov/University',
                             description: 'от калькулятора, до мини­-клиента http://bash.im/; от p2p чата, до очередной графической реализации Сокобана :)'
+                        }
+                    ];
+                    this.jobs = [
+                        {
+                            date: 'июль 2016 — настоящее время',
+                            role: 'Junior Developer в Lanit-Tercom',
+                            description: 'Принимаю участие в разработке ПО для крупного иностранного производителя устройств для контроля качества пищевой и сельскохозяйственной продукции',
+                            technologies: ['.Net', 'WCF', 'WPF', 'MS SQL']
                         }
                     ];
                 },

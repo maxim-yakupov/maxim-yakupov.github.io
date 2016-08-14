@@ -33,7 +33,33 @@
             </p>
             <hr>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-            <em class="mdl-color--primary mdl-color-text--accent-contrast">Опыт работы:</em> официально трудоустроен еще не был, однако участвовал в следующих проектах:
+            <p>
+                <em class="mdl-color--primary mdl-color-text--accent-contrast">Опыт работы:</em>
+            </p>
+            <div style="overflow-x: auto;">
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="white-space: normal;">
+                    <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Дата</th>
+                            <th class="mdl-data-table__cell--non-numeric">Должность</th>
+                            <th class="mdl-data-table__cell--non-numeric">Описание</th>
+                            <th class="mdl-data-table__cell--non-numeric">Технологии</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let job of jobs">
+                            <td class="mdl-data-table__cell--non-numeric">{{job.date}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{job.role}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{job.description}}</td>
+                            <td class="mdl-data-table__cell--non-numeric">{{job.technologies}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <p>
+                <em class="mdl-color--primary mdl-color-text--accent-contrast">Проекты:</em>
+            </p>
             <div style="overflow-x: auto;">
                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="white-space: normal;">
                     <thead>
@@ -55,13 +81,20 @@
                 </table>
             </div>
             <hr>
-            <em class="mdl-color--primary mdl-color-text--accent-contrast">Контакты:</em>
+            <p>
+                <em class="mdl-color--primary mdl-color-text--accent-contrast">Контакты:</em>
+            </p>
             <table align=center class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                 <thead>
                     <tr>
                         <td>
                             <a href="https://vk.com/yakupov_maxim" target="_blank" class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                 Vk.com
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://ru.linkedin.com/in/maxim-yakupov" target="_blank" class="mdl-button  mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                LinkedIn
                             </a>
                         </td>
                         <td>
